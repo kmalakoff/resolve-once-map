@@ -1,6 +1,6 @@
 ## resolve-once-map
 
-Resolves a promise only once and memoizes the result.
+Resolves a promise only once and memoizes the result in a map.
 
 ## Usage
 
