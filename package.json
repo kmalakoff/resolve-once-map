@@ -1,6 +1,6 @@
 {
   "name": "resolve-once-map",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Resolves a promise only once and memoizes the result in a map",
   "main": "index.js",
   "engines": {
@@ -13,20 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:kmalakoff/resolve-once.git"
+    "url": "git@github.com:kmalakoff/resolve-once-map.git"
   },
-  "keywords": [
-    "promise",
-    "resolve",
-    "once",
-    "memoize",
-    "resolve-once"
-  ],
+  "keywords": ["promise", "resolve", "once", "memoize", "resolve-once", "resolve-once-map"],
   "author": "Kevin Malakoff <kmalakoff@gmail.com> (https://github.com/kmalakoff)",
   "license": "MIT",
-  "homepage": "https://github.com/kmalakoff/resolve-once",
+  "homepage": "https://github.com/kmalakoff/resolve-once-map",
   "dependencies": {
-    "resolve-once": "^0.2.0"
+    "resolve-once-map": "^0.2.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.1.2",
