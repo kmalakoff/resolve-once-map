@@ -1,5 +1,7 @@
 ## resolve-once-map
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/kmalakoff/resolve-once-map.svg)](https://greenkeeper.io/)
+
 Resolves a promise only once and memoizes the result in a map.
 
 ## Usage
