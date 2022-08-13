@@ -21,6 +21,7 @@
     "lib"
   ],
   "scripts": {
+    "build": "",
     "format": "prettier --write .",
     "lint": "eslint .",
     "prepublishOnly": "npm run lint && depcheck",
@@ -28,13 +29,13 @@
     "test:engines": "nvu engines npm test"
   },
   "dependencies": {
-    "es6-promise": "^4.2.8",
+    "core-js": "^3.24.1",
     "resolve-once": "^0.5.0"
   },
   "devDependencies": {
-    "@typescript-eslint/parser": "^5.30.7",
+    "@typescript-eslint/parser": "^5.33.0",
     "depcheck": "^1.4.3",
-    "eslint": "^8.20.0",
+    "eslint": "^8.21.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
