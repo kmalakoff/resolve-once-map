@@ -1,3 +1,5 @@
+// biome-ignore lint/suspicious/noShadowRestrictedNames: <explanation>
+import Promise from 'pinkie-promise';
 import resolveOnce from 'resolve-once';
 
 export default function resolveOnceMap(fn) {
