@@ -1,1 +1,1 @@
-ignores: ["resolve-once-map", "depcheck", "@types/*", "@biomejs/*"]
+ignores: ["resolve-once-map", "@types/*", "@biomejs/*"]
