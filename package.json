@@ -24,16 +24,13 @@
   ],
   "scripts": {
     "build": "tsds build",
-    "clean": "node -e \"const dir = require('path').join(require('homedir-polyfill')(), '.im'); try {require('fs').rmdirSync(dir, {recursive: true})} catch(err) {}\"",
-    "deploy": "tsds deploy",
-    "docs": "tsds docs",
     "format": "biome check --write --unsafe src/ test/",
     "test": "tsds test:node --no-timeouts",
     "test:engines": "nvu engines npm test",
     "version": "tsds version"
   },
   "dependencies": {
-    "resolve-once": "^0.6.7"
+    "resolve-once": "^0.6.8"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
