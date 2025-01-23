@@ -30,7 +30,7 @@
     "version": "tsds version"
   },
   "dependencies": {
-    "resolve-once": "^0.6.11"
+    "resolve-once": "^0.6.12"
   },
   "devDependencies": {
     "@types/mocha": "*",
