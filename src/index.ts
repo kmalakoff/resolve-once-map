@@ -1,9 +1,11 @@
-import resolveOnce from 'resolve-once';
+import resolveOnce, { type Resolver } from 'resolve-once';
 
-export default function resolveOnceMap(fn) {
-  const resolvers = {};
+type ResolverMap<T> = { [key: string]: Resolver<T> };
 
-  return (key) => {
+export default function resolveOnceMap<T>(fn: Resolver<T>): Resolver<T> {
+  const resolvers: ResolverMap<T> = {};
+
+  return (key: string): Promise<T> => {
     if (!resolvers[key]) {
       resolvers[key] = resolveOnce(() => {
         try {
