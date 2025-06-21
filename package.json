@@ -1,6 +1,6 @@
 {
   "name": "resolve-once-map",
-  "version": "0.6.22",
+  "version": "0.6.23",
   "description": "Resolves a promise only once and memoizes the result in a map",
   "keywords": [
     "promise",
