@@ -18,9 +18,9 @@ describe('resolve-once-map', () => {
 
   it('handle success (no promise)', (callback) => {
     const counters = {};
-    const resolver = resolveOnceMap((key) => {
+    const resolver = resolveOnceMap<number>((key: string) => {
       counters[key] = counters[key] || 0;
-      return ++counters[key];
+      return Promise.resolve(++counters[key]);
     });
 
     Promise.all([resolver('one'), resolver('one'), resolver('two')]).then((results) => {
@@ -41,9 +41,9 @@ describe('resolve-once-map', () => {
 
   it('handle success (promise)', (callback) => {
     const counters = {};
-    const resolver = resolveOnceMap((key) => {
+    const resolver = resolveOnceMap<number>((key: string) => {
       counters[key] = counters[key] || 0;
-      return ++counters[key];
+      return Promise.resolve(++counters[key]);
     });
 
     Promise.all([resolver('one'), resolver('one'), resolver('two')]).then((results) => {
@@ -64,7 +64,7 @@ describe('resolve-once-map', () => {
 
   it('handle failure (no promise)', (callback) => {
     const counters = {};
-    const resolver = resolveOnceMap((key) => {
+    const resolver = resolveOnceMap<number>((key: string) => {
       counters[key] = counters[key] || 0;
       ++counters[key];
       throw new Error('Failed');
@@ -98,7 +98,7 @@ describe('resolve-once-map', () => {
 
   it('handle failure (promise)', (callback) => {
     const counters = {};
-    const resolver = resolveOnceMap((key) => {
+    const resolver = resolveOnceMap<number>((key: string) => {
       counters[key] = counters[key] || 0;
       ++counters[key];
       return Promise.reject(new Error('Failed'));
