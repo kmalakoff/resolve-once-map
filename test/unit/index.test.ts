@@ -1,6 +1,6 @@
 import assert from 'assert';
 import Pinkie from 'pinkie-promise';
-import resolveOnceMap from 'resolve-once-map';
+import resolveOnceMap, { type Resolver } from 'resolve-once-map';
 
 describe('resolve-once-map', () => {
   (() => {
@@ -16,11 +16,11 @@ describe('resolve-once-map', () => {
   })();
 
   it('handle success (no promise)', (callback) => {
-    const counters = {};
-    const resolver = resolveOnceMap<number>((key: string) => {
+    const counters: Record<string, number> = {};
+    const resolver = resolveOnceMap<number>(((key: string) => {
       counters[key] = counters[key] || 0;
       return Promise.resolve(++counters[key]);
-    });
+    }) as unknown as Resolver<number>);
 
     Promise.all([resolver('one'), resolver('one'), resolver('two')]).then((results) => {
       assert.equal(results.length, 3);
@@ -39,11 +39,11 @@ describe('resolve-once-map', () => {
   });
 
   it('handle success (promise)', (callback) => {
-    const counters = {};
-    const resolver = resolveOnceMap<number>((key: string) => {
+    const counters: Record<string, number> = {};
+    const resolver = resolveOnceMap<number>(((key: string) => {
       counters[key] = counters[key] || 0;
       return Promise.resolve(++counters[key]);
-    });
+    }) as unknown as Resolver<number>);
 
     Promise.all([resolver('one'), resolver('one'), resolver('two')]).then((results) => {
       assert.equal(results.length, 3);
@@ -62,14 +62,14 @@ describe('resolve-once-map', () => {
   });
 
   it('handle failure (no promise)', (callback) => {
-    const counters = {};
-    const resolver = resolveOnceMap<number>((key: string) => {
+    const counters: Record<string, number> = {};
+    const resolver = resolveOnceMap<number>(((key: string) => {
       counters[key] = counters[key] || 0;
       ++counters[key];
       throw new Error('Failed');
-    });
+    }) as unknown as Resolver<number>);
 
-    function wrapError(key) {
+    function wrapError(key: string) {
       return new Promise((resolve, _reject) => {
         resolver(key).catch((err) => {
           assert.deepEqual(counters, { one: 1, two: 1 });
@@ -96,14 +96,14 @@ describe('resolve-once-map', () => {
   });
 
   it('handle failure (promise)', (callback) => {
-    const counters = {};
-    const resolver = resolveOnceMap<number>((key: string) => {
+    const counters: Record<string, number> = {};
+    const resolver = resolveOnceMap<number>(((key: string) => {
       counters[key] = counters[key] || 0;
       ++counters[key];
       return Promise.reject(new Error('Failed'));
-    });
+    }) as unknown as Resolver<number>);
 
-    function wrapError(key) {
+    function wrapError(key: string) {
       return new Promise((resolve, _reject) => {
         resolver(key).catch((err) => {
           assert.deepEqual(counters, { one: 1, two: 1 });
