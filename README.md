@@ -14,5 +14,5 @@ const db2 = await connection('mongodb://localhost:27017/database');
 // db1 === db2
 
 const db3 = await connection('mongodb://localhost:27017/database2');
-// db1 === db3
+// db1 !== db3
 ```
